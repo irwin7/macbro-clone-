@@ -21,24 +21,13 @@ let elPriceText = document.querySelector('.form__pric');
 // inputs-end
 let elColorInp = document.querySelectorAll('.form__input-color');
 
-let sumVal = elPriceText.textContent.replace(/ /g, "");
-const oldSumVal = sumVal;
-let sumCount = elPrice.value;
 let memory = 256;
 let memoryRam = 8;
+let sumVal = '';
 
-elPlusBtn.addEventListener('click',()=>{
-    +sumCount++;
-    elPrice.value = sumCount;
-    elPriceText.textContent = +sumVal * sumCount;
-})
-elMinusBtn.addEventListener('click',()=>{
-    if(sumCount > 0){
-        +sumCount--;
-        elPrice.value = sumCount;
-        elPriceText.textContent = +sumVal - oldSumVal;
-    }
-})
+let oldSumVal = '11 400 000';
+let sumCount = +elPrice.textContent;
+changePrice(256,8)
 
 elOzu16Btn.addEventListener('click',()=>{
     elOzuTxt.textContent = '16gb'
@@ -86,22 +75,42 @@ elColorGreyBtn.addEventListener('click',()=>{
     elColorTxt.textContent = 'Grey';
 })
 
+
 function changePrice(mem,ram){
     sumCount = 1;
     elPrice.value = 1;
     if(ram == 8 && mem == 256){
-        elPriceText.textContent = '11 550 000';
+        oldSumVal = '11 550 000';
+        elPriceText.textContent = oldSumVal;
     }else if(ram == 8 && mem == 512){
-        elPriceText.textContent = '14 190 000';
+        oldSumVal = '14 190 000';
+        elPriceText.textContent = oldSumVal;
     }else if(ram == 16 && mem == 256){
-        elPriceText.textContent = '16 280 000';
+        oldSumVal = '16 280 000';
+        elPriceText.textContent = oldSumVal;
     }else if(ram == 16 && mem == 512){
-        elPriceText.textContent = '18 150 000';
+        oldSumVal = '18 150 000';
+        elPriceText.textContent = oldSumVal;
     }else if(ram == 16 && mem == 1){
-        elPriceText.textContent = '21 450 000';
+        oldSumVal = '21 450 000';
+        elPriceText.textContent = oldSumVal;
     }
+    sumVal = oldSumVal.replace(/ /g, "");
 }
 
+
+elPlusBtn.addEventListener('click',()=>{
+    sumCount++;
+    elPrice.textContent = sumCount;
+    elPriceText.textContent = sumVal *sumCount;
+})
+elMinusBtn.addEventListener('click',()=>{
+    if(sumCount > 0){
+        sumCount--;
+        elPrice.textContent = sumCount;
+        elPriceText.textContent = +elPriceText.textContent - sumVal;
+    }
+})
 
 
 
