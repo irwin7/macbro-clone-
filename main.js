@@ -42,7 +42,6 @@ elOzu8Btn.addEventListener('click',()=>{
     changePrice(memory,memoryRam);
 })
 
-
 for(let item of elMemorBtns){
     item.addEventListener('click',()=>{
         if(item.classList.contains('memor1')){
@@ -75,10 +74,9 @@ elColorGreyBtn.addEventListener('click',()=>{
     elColorTxt.textContent = 'Grey';
 })
 
-
 function changePrice(mem,ram){
     sumCount = 1;
-    elPrice.value = 1;
+    elPrice.textContent = 1;
     if(ram == 8 && mem == 256){
         oldSumVal = '11 550 000';
         elPriceText.textContent = oldSumVal;
@@ -98,12 +96,12 @@ function changePrice(mem,ram){
     sumVal = oldSumVal.replace(/ /g, "");
 }
 
-
 elPlusBtn.addEventListener('click',()=>{
     sumCount++;
     elPrice.textContent = sumCount;
     elPriceText.textContent = sumVal *sumCount;
 })
+
 elMinusBtn.addEventListener('click',()=>{
     if(sumCount > 0){
         sumCount--;
@@ -111,18 +109,6 @@ elMinusBtn.addEventListener('click',()=>{
         elPriceText.textContent = +elPriceText.textContent - sumVal;
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 chooseImg('gold');
 
